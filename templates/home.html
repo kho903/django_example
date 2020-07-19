@@ -1,67 +1,66 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>Django Blog</title>
+{% extends 'base.html' %}
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+{% load static %}
 
-</head>
-<body style="padding-top:90px;">
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <a class="navbar-brand mx-5 mb-0 font-weight-bold font-italic" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+{% block title %}home.html{% endblock %}
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item mx-1 btn btn-primary">
-                <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item mx-1 btn btn-primary">
-                <a class="nav-link text-white" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown mx-1 btn btn-primary">
-                <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">
-                    Dropdown
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another Action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-        </ul>
-        <form class="form-inline my-2">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search">
-        </form>
+{% block extra-style %}
+    <style type="text/css">
 
-        <ul class="navbar-nav ml-5 mr-5">
-            <li class="nav-item dropdown mx-1 btn btn-primary">
-                <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">
-                    <i class="fas fa-user"></i>&nbsp; Anonymous &nbsp;</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Login</a>
-                    <a class="dropdown-item" href="#">Register</a>
-                </div>
-            </li>
-        </ul>
+        .home-window {
+            background-image: url("{% static 'img/lion.jpg' %}");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100%;
+            height: 500px;
+            border-top: 10px solid #ccc;
+            border-bottom: 10px solid #ccc;
+            color: yellow;
+            padding: 20px 0 0 20px;
+        }
+
+        .title {
+            color: #c80;
+            font-weight: bold;
+        }
+
+        .powered {
+            position: relative;
+            top: 77%;
+            color: #cc0;
+            font-style: italic;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="home-window">
+        <h2 class="title">Django - Python Web Programming</h2>
+        <h4 class="powered"><i class="fas fa-arrow-circle-right"></i> powered by django and bootstrap.</h4>
     </div>
-</nav>
 
-<div class="container">
-    <h4>This is Content area.</h4>
-</div>
-<div class="fixed-bottom bg-info">
-    <h4>This is Footer area.</h4>
-</div>
+    <hr style="margin: 10px 0;">
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <div class="row text-center">
+        <div class="col-sm-6">
+            <h3>Todo App</h3>
+            <p>With Todo app, you can manage, prioritize, and complete the most important things
+                you need to do every day. I can focus on the most important things
+                and I can do my day more deliberately.
+                You can also share lists with colleagues, friends, and family.</p>
+        </div>
+        <div class="col-sm-6">
+            <h3>Blog App</h3>
+            <p>This application makes it possible to log daily events or write your own interests
+                such as hobbies, techniques, etc.
+                A typical blog combines text, digital images, and links to other blogs, web pages,
+                and other media related to its topic.</p>
+        </div>
+    </div>
+{% endblock %}
 
-{% block extra-script %}{% endblock %}
-</body>
-</html>
+{% block footer %}
+    <footer class="fixed-bottom bg-info">
+        <div class="text-white font-italic text-right mr-5">opyright &copy; 2019 DjangoBook by shkim</div>
+    </footer>
+{% endblock %}
