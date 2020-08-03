@@ -12,7 +12,6 @@ from blog.models import Post
 from mysite.views import OwnerOnlyMixin
 
 
-
 class PostLV(ListView):
     model = Post
     template_name = 'blog/post_all.html'
@@ -92,10 +91,11 @@ class SearchFormView(FormView):
 
         return render(self.request, self.template_name, context)
 
+
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['title', 'slug', 'description', 'content', 'tags']
-    initial = {'slug' : 'auto-filling-do-not-input'}
+    initial = {'slug': 'auto-filling-do-not-input'}
     # fields = ['title', 'description', 'content', 'tags']
     success_url = reverse_lazy('blog:index')
 
@@ -108,7 +108,7 @@ class PostChangeLV(LoginRequiredMixin, ListView):
     template_name = 'blog/post_change_list.html'
 
     def get_queryset(self):
-        return Post.objects.filter(owenr=self.request.user)
+        return Post.objects.filter(owner=self.request.user)
 
 
 class PostUpdateView(OwnerOnlyMixin, UpdateView):
@@ -120,8 +120,3 @@ class PostUpdateView(OwnerOnlyMixin, UpdateView):
 class PostDeleteView(OwnerOnlyMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('blog:index')
-
-
-
-
-
